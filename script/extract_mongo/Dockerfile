@@ -12,3 +12,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the script when the container launches
 CMD ["python", "extract_mongo_clickhouse.py"]
+
+# docker build -t mongo-extract:1.0 .

@@ -1,3 +1,4 @@
 pymongo
 clickhouse-driver
 python-dateutil
+python-dotenv

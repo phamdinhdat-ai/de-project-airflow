@@ -1,7 +1,7 @@
-version: 2
+version: 3
 
 sources:
-  - name: lake
-    database: de_project
+  - name: "{{ env_var('DBT_ENV_CUSTOM_ENV_CLICKHOUSE_USR') }}"
+    database: "{{ env_var('DBT_ENV_CUSTOM_ENV_SCHEMA') }}"
     tables: 
-      - name: houses_raw
+      - name: "{{ env_var('DBT_ENV_CUSTOM_ENV_CLICKHOUSE_TABLE') }}"

@@ -35,3 +35,10 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+    
+    models: 
+      +materialized: table
+      
+vars:
+    clickhouse_usr: "{{ env_var('DBT_ENV_CUSTOM_ENV_CLICKHOUSE_USR') }}"
+    clickhouse_table: "{{ env_var('DBT_ENV_CUSTOM_ENV_CLICKHOUSE_TABLE') }}"

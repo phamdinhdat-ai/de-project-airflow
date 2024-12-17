@@ -3,9 +3,10 @@ services:
   mongodb:
     image: mongo:7
     ports:
-      - "27017:27017"
-    networks:
-      - data-eng-network
+      - "27018:27018"
+    # networks:
+    #   - data-eng-network
+    network_mode: "host"
     volumes:
       - mongodb-data:/data/db
     environment:
@@ -14,8 +15,9 @@ services:
 
   clickhousedb:
     image: clickhouse/clickhouse-server:24.1
-    networks:
-      - data-eng-network
+    # networks:
+    #   - data-eng-network
+    network_mode: "host"
     ports:
       - "8123:8123"
       - "9000:9000"
@@ -25,9 +27,9 @@ services:
       - clickhouse-config:/etc/clickhouse-server/config.d/*.xml
       - clickhouse-user:/etc/clickhouse-server/users.d/*.xml
     environment:
-      - CLICKHOUSE_DB=default_lake
-      - CLICKHOUSE_USER=default_user
-      - CLICKHOUSE_PASSWORD=default_password
+      - CLICKHOUSE_DB=de_project
+      - CLICKHOUSE_USER=datpd1
+      - CLICKHOUSE_PASSWORD=datpd1
       - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
 
 volumes:
@@ -48,7 +50,8 @@ volumes:
   clickhouse-user:
     driver: local
 
-networks:
-  data-eng-network: 
-    name: data-eng-network
-    driver: bridge
+# networks:
+#   data-eng-network: 
+#     name: data-eng-network
+#     driver: bridge
+# network_mode: "host"

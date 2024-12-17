@@ -3,9 +3,10 @@ de_project_airflow:
   outputs:
     dev:
       type: clickhouse
-      schema: de_project
+      schema: "{{ env_var('DBT_ENV_CUSTOM_ENV_SCHEMA') }}"
       host: "{{ env_var('HOST_CLICKHOUSE') }}"
       port: 8123
-      user: default_user
-      password: default_password
+      user: "{{ env_var('DBT_ENV_CUSTOM_ENV_CLICKHOUSE_USR') }}"
+      password: "{{ env_var('DBT_ENV_SECRET_CLICKHOUSE_PW') }}"
       secure: False
+  
